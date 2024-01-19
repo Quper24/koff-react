@@ -4,9 +4,7 @@ import { API_URL } from '../../const.js';
 export const fetchAccessToken = createAsyncThunk(
   'auth/fetchAccessToken',
   async () => {
-    const response = await fetch(
-      `${API_URL}api/users/accessKey`,
-    );
+    const response = await fetch(`${API_URL}api/users/accessKey`);
 
     if (!response.ok) {
       throw new Error('Не удалось получить токен доступа!');
