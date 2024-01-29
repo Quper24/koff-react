@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { CartForm } from '../../components/CartForm/CartForm.jsx';
 import { CartPlace } from '../../components/CartPlace/CartPlace.jsx';
 import { CartProducts } from '../../components/CartProducts/CartProducts.jsx';
@@ -9,8 +10,6 @@ export const Cart = () => {
   const { products, totalPrice, totalCount } = useSelector(
     (state) => state.cart,
   );
-
-  console.log(products, totalPrice, totalCount)
 
   if (!totalCount) {
     return (

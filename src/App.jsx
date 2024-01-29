@@ -11,6 +11,7 @@ import { Card } from './components/Card/Card';
 import { Cart } from './views/Cart/Cart.jsx';
 import { Order } from './components/Order/Order.jsx';
 import { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs.jsx';
+import { PageNotFound } from './views/PageNotFound/PageNotFound.jsx';
 
 const router = createBrowserRouter([
   {
@@ -100,6 +101,18 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Order />
+        </main>
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '*',
+    element: (
+      <>
+        <Header />
+        <main>
+          <PageNotFound />
         </main>
         <Footer />
       </>

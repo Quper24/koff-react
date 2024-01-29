@@ -3,6 +3,7 @@ import s from './Pagination.module.scss';
 
 export const Pagination = ({ pagination }) => {
   const { currentPage, totalProducts, limit, totalPages } = pagination;
+  console.log('currentPage, totalProducts, limit, totalPages: ', currentPage, totalProducts, limit, totalPages);
   const location = useLocation();
   const [searchParam] = useSearchParams();
 
@@ -22,14 +23,15 @@ export const Pagination = ({ pagination }) => {
   const nextPageUrl =
     nextPageNumber <= totalPages ? createPageUrl(nextPageNumber) : '';
 
-  const width = currentPage * limit;
+  const width = currentPage * limit; 
+  console.log('width: ', width);
+
   const paginationCurrent =
     totalProducts === limit
       ? totalProducts
       : width < totalProducts
       ? width
       : width - limit + (totalProducts % limit);
-  console.log('paginationCurrent: ', paginationCurrent);
 
   return (
     <div className={s.pagination}>

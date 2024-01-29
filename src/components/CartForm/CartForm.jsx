@@ -4,8 +4,10 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { submitCartForm } from '../../store/formCart/formCart.slice.js';
+import { withRouter } from '../../helpers/withRouter'
 
-export const CartForm = () => {
+export const CartForm = withRouter(({router}) => {
+  console.log('window.location: ', window.location);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -126,4 +128,4 @@ export const CartForm = () => {
       </fieldset>
     </form>
   );
-};
+});
