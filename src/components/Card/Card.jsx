@@ -4,7 +4,10 @@ import s from './Card.module.scss';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchProduct } from '../../store/product/product.slice.js';
+import {
+  clearProduct,
+  fetchProduct,
+} from '../../store/product/product.slice.js';
 import { Slider } from '../Slider/Slider.jsx';
 import { FavoriteButton } from '../FavoriteButton/FavoriteButton.jsx';
 import { AddCartButton } from '../AddCartButton/AddCartButton.jsx';
@@ -15,12 +18,16 @@ export const Card = () => {
 
   useEffect(() => {
     dispatch(fetchProduct(productId));
+
+    return () => {
+      dispatch(clearProduct());
+    };
   }, [dispatch, productId]);
 
   if (loading) return <div>Загрузка...</div>;
   if (error) return <div>Ошибка: {error}</div>;
   if (!data) return <div>Продукт не найден, попробуйте позже!</div>;
-  
+
   return (
     <section className={s.card}>
       <Container className={s.container}>
