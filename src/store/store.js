@@ -3,9 +3,11 @@ import authReducer from './auth/auth.slice';
 import categoriesReducer from './categories/categories.slice';
 import productsReducer from './products/products.slice';
 import productReducer from './product/product.slice';
-import favoriteReducer from './favorite/favorite.js'
-import cartReducer from './cart/cart.slice.js'
-import { apiTokenErrorMiddleware } from './middleware.js';
+import favoriteReducer from './favorite/favorite'
+import cartReducer from './cart/cart.slice'
+import formCartReducer from './formCart/formCart.slice'
+import orderReducer from './order/order.slice'
+import { apiTokenErrorMiddleware } from './middleware';
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +17,8 @@ export const store = configureStore({
     product: productReducer,
     favorite: favoriteReducer,
     cart: cartReducer,
+    formCart: formCartReducer,
+    order: orderReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiTokenErrorMiddleware),

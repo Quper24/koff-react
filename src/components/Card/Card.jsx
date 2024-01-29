@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { fetchProduct } from '../../store/product/product.slice.js';
 import { Slider } from '../Slider/Slider.jsx';
 import { FavoriteButton } from '../FavoriteButton/FavoriteButton.jsx';
+import { AddCartButton } from '../AddCartButton/AddCartButton.jsx';
 export const Card = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ export const Card = () => {
           </div>
 
           <div className={s.btns}>
-            <button className={s.btn}>В корзину</button>
+            <AddCartButton className={s.btn} id={data.id} />
             <FavoriteButton className={s.like} id={data.id} />
           </div>
         </div>

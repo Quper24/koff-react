@@ -9,6 +9,8 @@ import { Catalog } from './views/Catalog/Catalog';
 import { Goods } from './views/Goods/Goods';
 import { Card } from './components/Card/Card';
 import { Cart } from './views/Cart/Cart.jsx';
+import { Order } from './components/Order/Order.jsx';
+import { Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs.jsx';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,7 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
+          <Breadcrumbs />
           <Goods />
         </main>
         <Footer />
@@ -83,7 +86,20 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
+          <Breadcrumbs />
           <Card />
+        </main>
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: '/order/:orderId',
+    element: (
+      <>
+        <Header />
+        <main>
+          <Order />
         </main>
         <Footer />
       </>
@@ -102,12 +118,10 @@ const App = () => {
   }, [dispatch, accessToken]);
 
   if (loading) {
-    return <div>Загрузка...</div>
+    return <div>Загрузка...</div>;
   }
 
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
